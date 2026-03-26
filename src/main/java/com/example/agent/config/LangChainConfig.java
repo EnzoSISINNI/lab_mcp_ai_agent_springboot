@@ -1,9 +1,9 @@
 package com.example.agent.config;
 
 import com.example.agent.agent.BacklogAgent;
+import com.example.agent.tools.AgentTool;
 import dev.langchain4j.model.anthropic.AnthropicChatModel;
 import dev.langchain4j.service.AiServices;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,12 +31,10 @@ public class LangChainConfig {
 
     @Bean
     public BacklogAgent backlogAgent(AnthropicChatModel model,
-                                     ObjectProvider<List<Object>> toolBeansProvider) {
-        List<Object> toolBeans = toolBeansProvider.getIfAvailable(List::of);
-
+                                     List<AgentTool> tools) {
         return AiServices.builder(BacklogAgent.class)
                 .chatModel(model)
-                .tools(toolBeans)
+                .tools(tools.toArray())
                 .build();
     }
 }
