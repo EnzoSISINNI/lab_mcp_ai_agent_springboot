@@ -18,9 +18,19 @@ repositories {
 }
 
 dependencies {
+    // Spring
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework:spring-webflux'
+
+    // LangChain4j BOM (pins everything to 1.10.0)
+    implementation platform('dev.langchain4j:langchain4j-bom:1.0.0')
+
+    // LangChain4j core + Anthropic
+    implementation 'dev.langchain4j:langchain4j'
+    implementation 'dev.langchain4j:langchain4j-anthropic'
+
+    // Testing
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
