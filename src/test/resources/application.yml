@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: agent-test
+
+github:
+  owner: test-owner
+  repo: test-repo
+
+anthropic:
+  api-key: test-key
+  model: claude-opus-4-20250514
+  max-tokens: 800
+  timeout-seconds: 60
+
+mcp:
+  base-url: http://localhost:3333
+  path: /mcp
